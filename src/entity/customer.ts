@@ -29,6 +29,9 @@ export class Customer {
     }
 
     activate(): void {
+        if(this._address === undefined){
+            throw new Error("Address is mandatory to activate a customer");
+        }
         this._active = true;
     }
 
