@@ -16,5 +16,14 @@ describe('Customer unit tests', () => {
 
     });
 
+    it('It should change name', () => {
+        
+        let customer = new Customer("123", "Breno");
+        customer.changeName("Vanessa");
+
+        expect(customer.name).toBe("Vanessa");
+
+    });
+
 
 });
