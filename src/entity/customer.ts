@@ -43,4 +43,8 @@ export class Customer {
     get name(): string {
         return this._name;
     }
+
+    isActive(): boolean {
+        return this._active;
+    }
 }
