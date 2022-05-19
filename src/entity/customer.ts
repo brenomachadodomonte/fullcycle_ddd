@@ -2,7 +2,7 @@ import { Address } from "./address";
 
 export class Customer {
 
-    _id: string;
+    private _id: string;
     _name: string;
     _address!: Address;
     _active: boolean = true;
@@ -38,5 +38,9 @@ export class Customer {
 
     set Address(address: Address) {
         this._address = address
+    }
+
+    get name(): string {
+        return this._name;
     }
 }
