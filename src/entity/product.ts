@@ -33,7 +33,7 @@ export class Product {
         return this._name;
     }
 
-    get price(): string {
+    get price(): number {
         return this._price;
     }
 
