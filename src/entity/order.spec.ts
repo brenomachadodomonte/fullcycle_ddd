@@ -3,7 +3,7 @@ import { Order } from "./order";
 
 describe('Order unit tests', () => {
 
-    it('It should throw error when id is empty', () => {
+    it('Should throw error when id is empty', () => {
         
         expect(() => {
             let order = new Order("", "123", []);
@@ -11,7 +11,7 @@ describe('Order unit tests', () => {
 
     });
 
-    it('It should throw error when CustomerId is empty', () => {
+    it('Should throw error when CustomerId is empty', () => {
         
         expect(() => {
             let order = new Order("123", "", []);
@@ -19,7 +19,7 @@ describe('Order unit tests', () => {
 
     });
 
-    it('It should throw error when CustomerId is empty', () => {
+    it('Should throw error when CustomerId is empty', () => {
         
         expect(() => {
             let order = new Order("123", "123", []);
@@ -27,7 +27,7 @@ describe('Order unit tests', () => {
 
     });
 
-    it('It should calculate total', () => {
+    it('Should calculate total', () => {
 
         const item1 = new OrderItem("1", "Item 1", 100, "p1", 2);
         const item2 = new OrderItem("2", "Item 2", 150, "p2", 2);
@@ -45,7 +45,7 @@ describe('Order unit tests', () => {
 
     });
 
-    it('It should throw error when item quantity is lower than 0', () => {
+    it('Should throw error when item quantity is lower than 0', () => {
 
         expect(() => {
             const item1 = new OrderItem("1", "Item 1", 100, "p1", 0);

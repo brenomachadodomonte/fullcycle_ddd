@@ -4,7 +4,7 @@ import { Customer } from "./customer";
 describe('Customer unit tests', () => {
 
 
-    it('It should throw error when id is empty', () => {
+    it('Should throw error when id is empty', () => {
         
         expect(() => {
             let customer = new Customer("", "Breno");
@@ -12,7 +12,7 @@ describe('Customer unit tests', () => {
 
     });
 
-    it('It should change name', () => {
+    it('Should change name', () => {
         
         let customer = new Customer("123", "Breno");
         customer.changeName("Vanessa");
@@ -21,7 +21,7 @@ describe('Customer unit tests', () => {
 
     });
 
-    it('It should activate customer', () => {
+    it('Should activate customer', () => {
         
         const customer = new Customer("1", "Customer 1");
         const address = new Address("Street 1", 123, "11111-111", "Teresina");
@@ -34,7 +34,7 @@ describe('Customer unit tests', () => {
     });
 
 
-    it('It should deactivate customer', () => {
+    it('Should deactivate customer', () => {
         
         const customer = new Customer("1", "Customer 1");
 
@@ -44,9 +44,7 @@ describe('Customer unit tests', () => {
 
     });
 
-    it('It should throw error when address is undefined when you activate a customer', () => {
-        
-        
+    it('Should throw error when address is undefined when you activate a customer', () => {
 
         expect(() => {
             const customer = new Customer("1", "Customer 1");
