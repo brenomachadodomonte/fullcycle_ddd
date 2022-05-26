@@ -41,7 +41,7 @@ export class Customer {
     }
 
     addRewardPoints(points: number) {
-        this._rewardPoints += 10;
+        this._rewardPoints += points;
     }
 
     set Address(address: Address) {

@@ -13,7 +13,6 @@ describe('Order Service unit tests', () => {
         const order = OrderService.placeOrder(customer, [ item1 ]);
 
         expect(customer.rewardPoints).toBe(5);
-
         expect(order.total()).toBe(10);
     });
 
@@ -26,6 +25,8 @@ describe('Order Service unit tests', () => {
         const ordem2  = new Order('o1', 'c1', [ item2 ]);
     
         const total = OrderService.total([ordem, ordem2]);
+
+        expect(total).toBe(500);
     });
 
 });
