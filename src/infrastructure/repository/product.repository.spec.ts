@@ -38,4 +38,20 @@ describe('Product Repository Unit test', () => {
         });
     });
 
+    it('Should find all products', async () => {
+        const productRepository = new ProductRepositoty();
+
+        const product = new Product('p1', "Product 1", 100);
+        await productRepository.create(product);
+
+        const product2 = new Product('p2', "Product 2", 200);
+        await productRepository.create(product2);
+
+        const foundProducts = await productRepository.findAll();
+        const products = [product, product2];
+
+        expect(products).toEqual(foundProducts);
+
+        
+    });
 });
