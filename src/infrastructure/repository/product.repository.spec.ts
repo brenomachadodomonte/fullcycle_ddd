@@ -1,4 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
+import { Product } from "../../domain/entity/product";
+import ProductModel from "../db/sequelize/model/product.model";
+import ProductRepositoty from "./product.repository";
 
 describe('Product Repository Unit test', () => {
 
@@ -11,12 +14,28 @@ describe('Product Repository Unit test', () => {
             logging: false,
             sync: { force: true }
         });
+
+        sequelize.addModels([ ProductModel ]);
+        await sequelize.sync();
     });
 
     afterEach(async () => {
         await sequelize.close();
     })
 
-    it('')
+    it('Should create a product', async () => {
+        const productRepository = new ProductRepositoty();
+        const product = new Product('p1', "Product 1", 100);
+
+        await productRepository.create(product);
+
+        const productModel = await ProductModel.findOne({ where: { id: 'p1' }});
+        
+        expect(productModel.toJSON()).toStrictEqual({
+            id: "p1",
+            name:  "Product 1",
+            price: 100
+        });
+    });
 
 });
