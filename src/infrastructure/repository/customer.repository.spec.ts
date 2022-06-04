@@ -2,7 +2,6 @@ import { Sequelize } from "sequelize-typescript";
 import { Address } from "../../domain/entity/address";
 import { Customer } from "../../domain/entity/customer";
 import { CustomerModel } from "../db/sequelize/model/customer.model";
-import ProductModel from "../db/sequelize/model/product.model";
 import { CustomerRepository } from "./customer.repository";
 
 describe('Customer Repository Unit test', () => {
@@ -47,8 +46,7 @@ describe('Customer Repository Unit test', () => {
     });
 
     it('Should find all products', async () => {
-        expect(10).toBe(10);
-        // const productRepository = new ProductRepositoty();
+        const customerRepository = new CustomerRepository();
 
         // const product = new Product('p1', "Product 1", 100);
         // await productRepository.create(product);

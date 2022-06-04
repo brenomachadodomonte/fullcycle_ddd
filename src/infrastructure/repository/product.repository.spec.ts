@@ -51,7 +51,6 @@ describe('Product Repository Unit test', () => {
         const products = [product, product2];
 
         expect(products).toEqual(foundProducts);
-
         
     });
 });
