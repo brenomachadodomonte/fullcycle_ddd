@@ -51,16 +51,16 @@ export class CustomerRepository implements CustomerRepositoryInterface {
             throw new Error('Customer not found');
         }
 
-        const costumer = new Customer(customerModel.id, customerModel.name);
+        const custumer = new Customer(customerModel.id, customerModel.name);
         const address = new Address(
             customerModel.street,
             customerModel.number,
             customerModel.zipcode,
             customerModel.city
         );
-        costumer.changeAddress(address);
+        custumer.changeAddress(address);
 
-        return costumer;
+        return custumer;
     }
 
     findAll(): Promise<Customer[]> {
