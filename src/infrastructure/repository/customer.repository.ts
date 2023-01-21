@@ -1,4 +1,3 @@
-import { where } from "sequelize/types";
 import { Address } from "../../domain/entity/address";
 import { Customer } from "../../domain/entity/customer";
 import CustomerRepositoryInterface from "../../domain/repository/customer-repository.interface";
