@@ -49,7 +49,11 @@ export class Customer {
     }
 
     set Address(address: Address) {
-        this._address = address
+        this._address = address;
+    }
+
+    get Address(): Address {
+        return this._address;
     }
 
     get name(): string {

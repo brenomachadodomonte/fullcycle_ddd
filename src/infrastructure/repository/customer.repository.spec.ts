@@ -40,7 +40,9 @@ describe('Customer Repository Unit test', () => {
             street: address.street,
             number: address.number,
             zipcode: address.zip,
-            city: address.city
+            city: address.city,
+            active: true,
+            rewardPoints: 0
         });
 
     });
