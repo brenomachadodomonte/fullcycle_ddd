@@ -69,7 +69,7 @@ export class CustomerRepository implements CustomerRepositoryInterface {
             const customer = new Customer(c.id, c.name);
             const address = new Address(c.street, c.number, c.zipcode, c.city);
             customer.changeAddress(address);
-
+            customer.addRewardPoints(c.rewardPoints);
             return customer;
         });
     }

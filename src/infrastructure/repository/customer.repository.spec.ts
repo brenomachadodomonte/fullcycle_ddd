@@ -70,17 +70,26 @@ describe('Customer Repository Unit test', () => {
     it('Should find all products', async () => {
         const customerRepository = new CustomerRepository();
 
-        // const product = new Product('p1', "Product 1", 100);
-        // await productRepository.create(product);
+        const customer1 = new Customer("123", "Customer 1");
+        const address1 = new Address('Rua 1', 10, '12345-678', 'Teresina');
+        customer1.Address = address1;
+        customer1.addRewardPoints(20);
+        customer1.activate();
 
-        // const product2 = new Product('p2', "Product 2", 200);
-        // await productRepository.create(product2);
+        const customer2 = new Customer("456", "Customer 2");
+        const address2 = new Address('Rua 1', 10, '12345-678', 'Teresina');
+        customer2.Address = address2;
+        customer2.addRewardPoints(10);
+        customer2.activate();
 
-        // const foundProducts = await productRepository.findAll();
-        // const products = [product, product2];
+        await customerRepository.create(customer1);
+        await customerRepository.create(customer2);
 
-        // expect(products).toEqual(foundProducts);
+        const customers = await customerRepository.findAll();
 
+        expect(customers).toHaveLength(2);
+        expect(customers).toContainEqual(customer1);
+        expect(customers).toContainEqual(customer2);
         
     });
 });
