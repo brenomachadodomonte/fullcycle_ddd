@@ -41,10 +41,22 @@ describe('Customer Repository Unit test', () => {
             number: address.number,
             zipcode: address.zip,
             city: address.city,
-            active: true,
+            active: customer.isActive(),
             rewardPoints: 0
         });
 
+    });
+
+    it('Should find a customer', async () => {
+        const customerRepository = new CustomerRepository();
+        const customer = new Customer("123", "Customer 1");
+        const address = new Address('Rua 1', 10, '12345-678', 'Teresina');
+        customer.Address = address;
+        await customerRepository.create(customer);
+
+        const customerResult = await customerRepository.find(customer.id);
+
+        expect(customer).toStrictEqual(customerResult);
     });
 
     it('Should find all products', async () => {
