@@ -25,21 +25,19 @@ export class OrderRepository {
     }
 
     async update(entity: Order): Promise<void> {
-        // await CustomerModel.update(
-        //     { 
-        //         name: entity.name,
-        //         street: entity.Address.street,
-        //         number: entity.Address.number,
-        //         zipcode: entity.Address.zip,
-        //         city: entity.Address.city,
-        //         active: entity.isActive(),
-        //         rewardPoints: entity.rewardPoints
-        //     },
-
-        //     {
-        //         where: { id: entity.id }
-        //     }
-        // );
+        await OrderModel.update({
+            customer_id: entity.customerId,
+            total: entity.total(),
+            items: entity.items.map(item => ({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                product_id: item.productId,
+                quantity: item.quantity
+            }))
+        }, {
+            where: { id: entity.id }, 
+        });
     }
 
     async find(id: string): Promise<Order> {
@@ -81,7 +79,7 @@ export class OrderRepository {
                     item.product_id,
                     item.quantity
         ))));
-        
+
         return orders;
     }
 }
