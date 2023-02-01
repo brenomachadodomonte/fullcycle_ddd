@@ -68,15 +68,20 @@ export class OrderRepository {
     }
 
     async findAll(): Promise<Order[]> {
-        // const customerModels = await CustomerModel.findAll();
-
-        // return customerModels.map(c => {
-        //     const customer = new Customer(c.id, c.name);
-        //     const address = new Address(c.street, c.number, c.zipcode, c.city);
-        //     customer.changeAddress(address);
-        //     customer.addRewardPoints(c.rewardPoints);
-        //     return customer;
-        // });
-        return [];
+        const ordersModel = await OrderModel.findAll({include: ["items"]});
+        
+        const orders = ordersModel.map(orderModel => 
+            new Order(
+                orderModel.id, 
+                orderModel.customer_id, 
+                orderModel.items.map(item => new OrderItem(
+                    item.id,
+                    item.name,
+                    item.price,
+                    item.product_id,
+                    item.quantity
+        ))));
+        
+        return orders;
     }
 }
