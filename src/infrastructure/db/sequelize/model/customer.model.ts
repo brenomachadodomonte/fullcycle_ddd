@@ -1,5 +1,4 @@
 import { Column, Model, PrimaryKey, Table } from "sequelize-typescript";
-import { Col } from "sequelize/types/utils";
 
 
 @Table({

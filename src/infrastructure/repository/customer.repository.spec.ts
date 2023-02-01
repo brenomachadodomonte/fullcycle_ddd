@@ -22,7 +22,7 @@ describe('Customer Repository Unit test', () => {
 
     afterEach(async () => {
         await sequelize.close();
-    })
+    });
 
     it('Should create a product', async () => {
         const customerRepository = new CustomerRepository();
