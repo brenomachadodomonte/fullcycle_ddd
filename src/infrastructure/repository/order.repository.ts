@@ -27,14 +27,7 @@ export class OrderRepository {
     async update(entity: Order): Promise<void> {
         await OrderModel.update({
             customer_id: entity.customerId,
-            total: entity.total(),
-            items: entity.items.map(item => ({
-                id: item.id,
-                name: item.name,
-                price: item.price,
-                product_id: item.productId,
-                quantity: item.quantity
-            }))
+            total: entity.total()
         }, {
             where: { id: entity.id }, 
         });

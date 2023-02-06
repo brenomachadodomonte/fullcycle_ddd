@@ -155,4 +155,91 @@ describe('Order Repository Unit test', () => {
         expect(ordersResult).toContainEqual(order2);
     });
 
+    it('Should update an order', async () => {
+        const repository = new CustomerRepository();
+        const customer = new Customer("123", "Customer 1");
+        const address = new Address('Rua 1', 10, '12345-678', 'Teresina');
+        customer.changeAddress(address);
+
+        await repository.create(customer);
+
+        const productRepository = new ProductRepositoty();
+        const product = new Product("123", "Product 1", 10);
+        await productRepository.create(product);
+
+        const orderItem = new OrderItem("1", product.name, product.price, product.id,2);
+        const orderItem2 = new OrderItem("2", product.name, product.price, product.id,3);
+        
+        const order = new Order("123", "123", [orderItem, orderItem2]);
+        const orderRepository = new OrderRepository();
+        await orderRepository.create(order);
+
+        const orderModel = await OrderModel.findOne({ 
+            where: { id: order.id },
+            include: ["items"]
+        });
+
+        expect(orderModel.toJSON()).toStrictEqual({
+            id: order.id,
+            customer_id: customer.id,
+            total: order.total(),
+            items: [
+                {
+                    id: orderItem.id,
+                    name: orderItem.name,
+                    price: orderItem.price,
+                    quantity: orderItem.quantity,
+                    order_id: order.id,
+                    product_id: product.id
+                },
+                {
+                    id: orderItem2.id,
+                    name: orderItem2.name,
+                    price: orderItem2.price,
+                    quantity: orderItem2.quantity,
+                    order_id: order.id,
+                    product_id: product.id
+                }
+            ]
+        });
+
+        const customer2 = new Customer("321", "Customer 2");
+        const address2 = new Address('Rua 2', 20, '12345-678', 'Teresina');
+        customer2.changeAddress(address2);
+
+        await repository.create(customer2); 
+        
+        order.customerId = customer2.id;
+
+        await orderRepository.update(order);
+
+        const orderModel2 = await OrderModel.findOne({ 
+            where: { id: order.id },
+            include: ["items"]
+        });
+
+        expect(orderModel2.toJSON()).toStrictEqual({
+            id: order.id,
+            customer_id: customer2.id,
+            total: order.total(),
+            items: [
+                {
+                    id: orderItem.id,
+                    name: orderItem.name,
+                    price: orderItem.price,
+                    quantity: orderItem.quantity,
+                    order_id: order.id,
+                    product_id: product.id
+                },
+                {
+                    id: orderItem2.id,
+                    name: orderItem2.name,
+                    price: orderItem2.price,
+                    quantity: orderItem2.quantity,
+                    order_id: order.id,
+                    product_id: product.id
+                }
+            ]
+        });
+    });
 })

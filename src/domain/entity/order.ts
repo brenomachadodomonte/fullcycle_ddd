@@ -47,4 +47,8 @@ export class Order {
         return this._items;
     }
 
+    set customerId(customerID: string) {
+        this._customerID = customerID;
+        this.validate();
+    }    
 }
