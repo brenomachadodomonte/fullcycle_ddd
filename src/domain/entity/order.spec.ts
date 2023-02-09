@@ -6,7 +6,7 @@ describe('Order unit tests', () => {
     it('Should throw error when id is empty', () => {
         
         expect(() => {
-            let order = new Order("", "123", []);
+            const order = new Order("", "123", []);
         }).toThrowError('ID is required');
 
     });
@@ -14,7 +14,7 @@ describe('Order unit tests', () => {
     it('Should throw error when CustomerId is empty', () => {
         
         expect(() => {
-            let order = new Order("123", "", []);
+            const order = new Order("123", "", []);
         }).toThrowError('CustomerId is required');
 
     });
@@ -22,7 +22,7 @@ describe('Order unit tests', () => {
     it('Should throw error when CustomerId is empty', () => {
         
         expect(() => {
-            let order = new Order("123", "123", []);
+            const order = new Order("123", "123", []);
         }).toThrowError('Items are required');
 
     });
