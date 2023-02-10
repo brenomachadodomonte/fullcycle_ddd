@@ -1,9 +1,9 @@
-import { Address } from './domain/entity/address';
-import { Customer } from './domain/entity/customer';
-import { OrderItem } from './domain/entity/ordem-item';
-import { Order } from './domain/entity/order';
+import { Address } from './domain/customer/value-object/address';
+import { Customer } from './domain/customer/entity/customer';
+import { OrderItem } from './domain/checkout/entity/ordem-item';
+import { Order } from './domain/checkout/entity/order';
 
-let customer = new Customer("123", "Breno Machado");
+const customer = new Customer("123", "Breno Machado");
 const address = new Address("Rua 2", 2, "12345-678", "Teresina");
 customer.Address = address;
 customer.activate();

@@ -1,4 +1,4 @@
-import { Customer } from "../entity/customer";
+import { Customer } from "../../customer/entity/customer";
 import { OrderItem } from "../entity/ordem-item";
 import { Order } from "../entity/order";
 import { v4 as uuid} from "uuid";
@@ -10,7 +10,7 @@ export default class OrderService {
     }
 
     static placeOrder(customer: Customer, items: OrderItem[]): Order {
-        if(items.length == 0) {
+        if(items.length === 0) {
             throw new Error('order must have at least one item');
         }
 
