@@ -1,6 +1,7 @@
+import ProductInterface from "./product.interface";
 
 
-export class Product {
+export class Product implements ProductInterface {
 
     private _id: string;
     private _name: string;
