@@ -8,6 +8,7 @@ describe('Customer unit tests', () => {
         
         expect(() => {
             const customer = new Customer("", "Breno");
+            console.log(customer.name);
         }).toThrowError('ID is required');
 
     });
@@ -25,7 +26,7 @@ describe('Customer unit tests', () => {
         
         const customer = new Customer("1", "Customer 1");
         const address = new Address("Street 1", 123, "11111-111", "Teresina");
-        customer.Address = address;
+        customer.changeAddress(address);
 
         customer.activate();
 

@@ -1,6 +1,6 @@
 import { BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from "sequelize-typescript";
 import { Col } from "sequelize/types/utils";
-import { CustomerModel } from "./customer.model";
+import { CustomerModel } from "../../../customer/repository/sequelize/customer.model";
 import { OrderItemModel } from "./order-item.model";
 
 

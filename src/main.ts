@@ -13,3 +13,4 @@ const item2 = new OrderItem("2", "Item 2", 15, "p1", 2);
 const item3 = new OrderItem("3", "Item 3", 20, "p1", 2);
 
 const order = new Order("1", "123", [item1, item2, item3]);
+console.log(order);
