@@ -4,6 +4,7 @@ import { v4 as uuid} from "uuid";
 import {ProductB} from "../entity/productb";
 
 export default class ProductFactory {
+    private constructor() {}
 
     public static create(type: string, name: string, price: number) : ProductInterface {
         switch (type){
