@@ -1,9 +1,6 @@
 import { Product } from "../../../../domain/product/entity/product";
 import ProductRepositoryInterface from "../../../../domain/product/repository/product-repository.interface";
 import { ProductModel } from "./product.model";
-import {CustomerModel} from "../../../customer/repository/sequelize/customer.model";
-import {Customer} from "../../../../domain/customer/entity/customer";
-import {Address} from "../../../../domain/customer/value-object/address";
 
 export default class ProductRepositoty implements ProductRepositoryInterface {
     
@@ -15,8 +12,16 @@ export default class ProductRepositoty implements ProductRepositoryInterface {
         });
     }
 
-    update(entity: Product): Promise<void> {
-        throw new Error("Method not implemented.");
+    async update(entity: Product): Promise<void> {
+        await ProductModel.update(
+            {
+                name: entity.name,
+                price: entity.price
+            },
+            {
+                where: { id: entity.id }
+            }
+        );
     }
 
     async find(id: string): Promise<Product> {
