@@ -1,0 +1,30 @@
+### Create a customer
+POST localhost:3000/customer
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "address": {
+    "street": "Street",
+    "city": "City",
+    "number": 123,
+    "zip": "12345"
+  }
+}
+
+### List all customers
+GET localhost:3000/customer
+Content-Type: application/json
+
+### Create a product
+POST localhost:3000/product
+Content-Type: application/json
+
+{
+  "name": "smartphone",
+  "price": 10.50
+}
+
+### List all customers
+GET localhost:3000/customer
+Content-Type: application/json
