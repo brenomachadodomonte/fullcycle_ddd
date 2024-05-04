@@ -26,4 +26,8 @@ export default class Notification {
     get errors(): NotificationErrorProps[] {
         return this._errors
     }
+
+    getErrors(): NotificationErrorProps[] {
+        return this._errors
+    }
 }

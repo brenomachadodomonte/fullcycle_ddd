@@ -48,6 +48,6 @@ describe('unit test for notification', () => {
         }
         notification.addError(error)
 
-        expect(notification.errors).toBe([error])
+        expect(notification.getErrors()).toEqual([error])
     });
 })
