@@ -6,7 +6,7 @@ describe('Product unit tests', () => {
         
         expect(() => {
             const product = new Product("", "Product1", 100);
-        }).toThrowError('ID is required');
+        }).toThrowError('Product: ID is required');
 
     });
 
@@ -14,7 +14,15 @@ describe('Product unit tests', () => {
         
         expect(() => {
             const product = new Product("123", "", 100);
-        }).toThrowError('Name is required');
+        }).toThrowError('Product: Name is required');
+
+    });
+
+    it('Should throw error when name and id are empty', () => {
+
+        expect(() => {
+            const product = new Product("", "", 100);
+        }).toThrowError('Product: ID is required,Product: Name is required');
 
     });
 
@@ -22,7 +30,15 @@ describe('Product unit tests', () => {
         
         expect(() => {
             const product = new Product("123", "Product", -1);
-        }).toThrowError('Price must be greater than 0');
+        }).toThrowError('Product: Price must be greater than 0');
+
+    });
+
+    it('Should throw error when price is lower than 0', () => {
+
+        expect(() => {
+            const product = new Product("123", "Product", -1);
+        }).toThrowError('Product: Price must be greater than 0');
 
     });
 
