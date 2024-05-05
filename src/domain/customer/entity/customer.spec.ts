@@ -24,7 +24,7 @@ describe('Customer unit tests', () => {
 
         expect(() => {
             const customer = new Customer("", "");
-        }).toThrowError('Customer: Name is required,Customer: ID is required');
+        }).toThrowError('Customer: ID is required,Customer: Name is required');
 
     });
 
